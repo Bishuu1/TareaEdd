@@ -42,13 +42,13 @@ class abb:
             return self._find(value, node.left)
         elif value > node.value and node.right != none:
             return self._find(value, node.right)
-            def find(self, value):
+    def find(self, value):
         if self.empty():
             return None
         else:
             return self._find(value, self.root)
 
-    def delete(self, value): #Implementar
+    def delete(self, value): 
         if self.empty():
             return None
         return self.delete_node(self.find(value))
@@ -59,7 +59,7 @@ class abb:
             while current.left != None:
                 current = current.left
             return current
-        def number_children(n): # Return the number of childrens of the node to be deleted
+        def number_children(n): 
             number_children = 0
             if n.left != None:
                 number_children += 1
@@ -67,7 +67,7 @@ class abb:
                 number_children += 1
             return number_children
 
-        node_parent = node.parent # Get the parent of the node to be deleted
+        node_parent = node.parent 
         node_children = number_children(node)
 
         # Case 1: Deleting a node without childrens
