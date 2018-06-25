@@ -3,7 +3,7 @@ class Node:
         self.left = None
         self.right = None
         self.data = data
-        self.papi = None 
+        self.padre = None 
 class abb:
     def __init__(self):
         self.root = None
@@ -15,13 +15,13 @@ class abb:
         if value > node.value:
             if node.right == None:
                 node.right = Node(value)
-                node.right.papi = node
+                node.right.padre = node
             else:
                 self._insert(value, node.right)
         elif value < node.value:
             if node.left == None:
                 node.left = Node(value)
-                node.left.papi = node
+                node.left.padre = node
             else:
                 self._insert(value, node.left)
         else:
