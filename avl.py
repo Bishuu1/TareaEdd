@@ -1,18 +1,15 @@
-# Generic tree node class
+
 class TreeNode(object):
     def __init__(self, val):
         self.val = val
         self.left = None
         self.right = None
         self.height = 1
+       
  
-# AVL tree class which supports the 
-# Insert operation
+
 class AVL_Tree(object):
  
-    # Recursive function to insert key in 
-    # subtree rooted with node and returns
-    # new root of subtree.
     def insert(self, root, key):
      
         # Step 1 - Perform normal BST
@@ -109,4 +106,6 @@ class AVL_Tree(object):
         print("{0} ".format(root.val), end="")
         self.preOrder(root.left)
         self.preOrder(root.right)
+
+    def delete(self,root,)
             
