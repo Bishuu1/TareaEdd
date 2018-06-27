@@ -1,8 +1,12 @@
 class Node:
-    def __init__(self, data):
+    def __init__(self, nombre, apellido, telefono, mail):
         self.left = None
         self.right = None
-        self.data = data
+        self.apellido = apellido
+        self.datos = string
+        self.nombre = nombre
+        self.mail = mail
+        self.telefono = telefono
         self.padre = None 
 class abb:
     def __init__(self):
@@ -33,20 +37,20 @@ class abb:
         else:
             self._insert(value, self.root)
 
-    def _find(self, value, node):
+    def _find(self, apellido, node):
         if node == None:
             return None
-        elif value == node.value:
+        elif apellido == node.apellido:
             return node
-        elif value < node.value and node.left != None:
-            return self._find(value, node.left)
-        elif value > node.value and node.right != none:
-            return self._find(value, node.right)
-    def find(self, value):
+        elif apellido < node.apellido and node.left != None:
+            return self._find(apellido, node.left)
+        elif apellido > node.apellido and node.right != none:
+            return self._find(apellido, node.right)
+    def find(self, apellido):
         if self.empty():
             return None
         else:
-            return self._find(value, self.root)
+            return self._find(apellido, self.root)
 
     def delete(self, value): 
         if self.empty():
