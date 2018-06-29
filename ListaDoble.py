@@ -15,22 +15,22 @@ class LDE:
     def empty(self):
         return self.head == None
 
-    def insert_atras(self, data):
+    def insert_atras(self, nombre, apellido, telefono, mail):
         if self.empty():
-            self.head = Node(data)
+            self.head = Node(nombre, apellido, telefono, mail)
             self.tail = self.head
         else:
-            node  = Node(data)
+            node  = Node(nombre, apellido, telefono, mail)
             self.tail.next = node
             node.prev = self.tail
             self.tail = node
 
-    def insert_adelante(self, data):
+    def insert_adelante(self, nombre, apellido, telefono, mail):
         if self.empty():
-            self.head = Node(data)
+            self.head = Node(nombre, apellido, telefono, mail)
             self.tail = self.head
         else:
-            node = Node(data)
+            node = Node(nombre, apellido, telefono, mail)
             node.next = self.head
             self.head.prev = node
             self.head = node
@@ -49,11 +49,15 @@ class LDE:
                 else:
                     aux = aux.next 
     def eliminashon (self, apellido): //dudas con este, revisar
+        if self.buscar(apellido) == self.head:
+            self.head.next.prev = None
+            self.head = self.head.next
+        if self.buscar(apellido) == self.tail:
+            self.tail.prev.next = None
+            self.tail = self.tail.prev
         if self.buscar(apellido):
             self.buscar(apellido).prev.next = self.buscar(apellido).next
             self.buscar(apellido).next.prev = self.buscar(apellido).prev
-
-
 
     def imprimir(self):
         if self.empty():
@@ -62,9 +66,10 @@ class LDE:
             temp = self.head
             i = 1
             while True:
-                print("Nodo {} contiene el número {}".format(i, temp.apellido))
+                print("Datos: ".format(i, temp.nombre, temp.apellido, temp.telefono, temp.email))
                 temp = temp.next
                 i += 1
                 if temp == None:
                     break
+       
     

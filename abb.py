@@ -3,7 +3,6 @@ class Node:
         self.left = None
         self.right = None
         self.apellido = apellido
-        self.datos = string
         self.nombre = nombre
         self.mail = mail
         self.telefono = telefono
@@ -15,27 +14,27 @@ class abb:
     def empty(self):
         return self.root == None
 
-    def _insert(self, value, node):
-        if value > node.value:
+    def _insert(self, nombre, apellido, telefono, mail, node):
+        if apellido > node.apellido:
             if node.right == None:
-                node.right = Node(value)
+                node.right = Node(nombre, apellido, telefono, mail)
                 node.right.padre = node
             else:
-                self._insert(value, node.right)
-        elif value < node.value:
+                self._insert(nombre, apellido, telefono, mail, node.right)
+        elif apellido < node.apellido:
             if node.left == None:
-                node.left = Node(value)
+                node.left = Node(nombre, apellido, telefono, mail)
                 node.left.padre = node
             else:
-                self._insert(value, node.left)
+                self._insert(nombre, apellido, telefono, mail, node.left)
         else:
             print("contacto ya existe")
 
-    def insert(self, value):
+    def insert(self, nombre, apellido, telefono, mail):
         if self.empty():
-            self.root = Node(value)
+            self.root = Node(nombre, apellido, telefono, mail)
         else:
-            self._insert(value, self.root)
+            self._insert(apellido, self.root)
 
     def _find(self, apellido, node):
         if node == None:
@@ -52,13 +51,13 @@ class abb:
         else:
             return self._find(apellido, self.root)
 
-    def delete(self, value): 
+    def delete(self, apellido): 
         if self.empty():
             return None
-        return self.delete_node(self.find(value))
+        return self.delete_node(self.find(apellido))
 
     def delete_node(self, node):
-        def min_value_node(n):
+        def min_apellido_node(n):
             current = n
             while current.left != None:
                 current = current.left
@@ -98,6 +97,16 @@ class abb:
             child.parent = node_parent
         # Case 3: Deleting a node with two childrens
         if node_children == 2:
-            successor = min_value_node(node.right) # Get the inorder successor of the deleted node
-            node.value = successor.value # Copy the value
+            successor = min_apellido_node(node.right) # Get the inorder successor of the deleted node
+            node.apellido = successor.apellido # Copy the apellido
             self.delete_node(successor)
+    
+    def imprimir_in_order(self, node): 
+        if node==None:
+            return None
+        else:
+            self.in_order(node.left)
+            print(node.value)
+            self.in_order(node.right)
+    
+
