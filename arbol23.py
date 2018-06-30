@@ -14,3 +14,4 @@ class arbol23:
                 if new_node.data[0]< self.data[i]:
                     self.childrens[i]._insert(new_node)
                         break
+ 

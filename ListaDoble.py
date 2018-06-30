@@ -11,6 +11,7 @@ class LDE:
     def __init__(self):
         self.head = None
         self.tail = None
+        self.n = 0
 
     def empty(self):
         return self.head == None
@@ -24,6 +25,7 @@ class LDE:
             self.tail.next = node
             node.prev = self.tail
             self.tail = node
+        n++
 
     def insert_adelante(self, nombre, apellido, telefono, mail):
         if self.empty():
@@ -34,6 +36,7 @@ class LDE:
             node.next = self.head
             self.head.prev = node
             self.head = node
+        n++
     def buscar (self, apellido):
         if self.empty():
             return false        

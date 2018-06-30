@@ -20,7 +20,7 @@ class arbol_avl():
             self.root.left = arbol_avl() 
             self.root.right = arbol_avl()
         
-        elif apellido > tree.apellido(): 
+        elif apellido[0] > tree.apellido[0]: 
             self.root.right.insertar(nombre,apellido,telefono,mail)
             
         else: 
@@ -96,7 +96,7 @@ class arbol_avl():
 
     def eliminar(self, value):                                                   
         if self.root != None: 
-            if self.root.apellido() == value: 
+            if self.root.apellido == value: 
                 if self.root.left.root == None and self.root.right.root == None:  
                     self.root = None  
                 elif self.root.left.root == None: 
@@ -110,9 +110,9 @@ class arbol_avl():
                         self.root.right.eliminar(replacement.apellido)              
                 self.rebalancear()
                 return  
-            elif value <= self.root.apellido(): 
+            elif value <= self.root.apellido: 
                 self.root.left.eliminar(value)  
-            elif value > self.root.apellido(): 
+            elif value > self.root.apellido: 
                 self.root.right.eliminar(value)
                         
             self.rebalancear()
@@ -129,13 +129,6 @@ class arbol_avl():
                     aux = aux.left.root  
         return aux 
 
-    def imprimir(self):                                                           
-        self.update_alturas()
-        self.update_balances()
-        if(self.root != None): 
-            self.root.left.imprimir()
-            print (self.root.apellido())  
-            self.root.right.imprimir()
 
     def buscar(self,value):                                                          
         if(self.root != None):

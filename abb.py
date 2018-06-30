@@ -15,13 +15,13 @@ class abb:
         return self.root == None
 
     def _insert(self, nombre, apellido, telefono, mail, node):
-        if apellido > node.apellido:
+        if apellido[0] > node.apellido[0]:
             if node.right == None:
                 node.right = Node(nombre, apellido, telefono, mail)
                 node.right.padre = node
             else:
                 self._insert(nombre, apellido, telefono, mail, node.right)
-        elif apellido < node.apellido:
+        elif apellido[0] < node.apellido[0]:
             if node.left == None:
                 node.left = Node(nombre, apellido, telefono, mail)
                 node.left.padre = node
@@ -34,16 +34,16 @@ class abb:
         if self.empty():
             self.root = Node(nombre, apellido, telefono, mail)
         else:
-            self._insert(apellido, self.root)
+            self._insert(nombre,apellido,telefono,mail, self.root)
 
     def _find(self, apellido, node):
         if node == None:
             return None
         elif apellido == node.apellido:
             return node
-        elif apellido < node.apellido and node.left != None:
+        elif apellido[0] < node.apellido[0] and node.left != None:
             return self._find(apellido, node.left)
-        elif apellido > node.apellido and node.right != none:
+        elif apellido[0] > node.apellido[0] and node.right != none:
             return self._find(apellido, node.right)
     def find(self, apellido):
         if self.empty():
