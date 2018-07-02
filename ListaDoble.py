@@ -16,7 +16,7 @@ class LDE:
     def empty(self):
         return self.head == None
 
-    def insert_atras(self, nombre, apellido, telefono, mail):
+    def insert(self, nombre, apellido, telefono, mail):
         if self.empty():
             self.head = Node(nombre, apellido, telefono, mail)
             self.tail = self.head
@@ -25,7 +25,7 @@ class LDE:
             self.tail.next = node
             node.prev = self.tail
             self.tail = node
-        n++
+        n+1
 
     def insert_adelante(self, nombre, apellido, telefono, mail):
         if self.empty():
@@ -36,7 +36,7 @@ class LDE:
             node.next = self.head
             self.head.prev = node
             self.head = node
-        n++
+        n+1
     def buscar (self, apellido):
         if self.empty():
             return false        
@@ -51,14 +51,14 @@ class LDE:
                     return true
                 else:
                     aux = aux.next 
-    def eliminashon (self, apellido): //dudas con este, revisar
-        if self.buscar(apellido) == self.head:
+    def eliminashon (self, apellido): 
+        if self.buscar(apellido) == self.head: #si es la cabeza
             self.head.next.prev = None
             self.head = self.head.next
-        if self.buscar(apellido) == self.tail:
+        if self.buscar(apellido) == self.tail: #si es la cola
             self.tail.prev.next = None
             self.tail = self.tail.prev
-        if self.buscar(apellido):
+        if self.buscar(apellido): #valor entremedio
             self.buscar(apellido).prev.next = self.buscar(apellido).next
             self.buscar(apellido).next.prev = self.buscar(apellido).prev
 
@@ -74,5 +74,3 @@ class LDE:
                 i += 1
                 if temp == None:
                     break
-       
-    
